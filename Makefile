@@ -1,6 +1,15 @@
-.PHONY: all clean view
+.PHONY: help all clean view
 
-all: main.pdf
+help:
+	@echo "Usage:"
+	@echo "  make        Show this help"
+	@echo "  make build  Compile main.pdf from main.tex"
+	@echo "  make view   Open the generated PDF"
+	@echo "  make clean  Remove all build artifacts"
+
+all: help
+
+build: main.pdf
 
 main.pdf: main.tex
 	latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make main.tex
