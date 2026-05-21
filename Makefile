@@ -23,6 +23,7 @@ format:
 clean:
 	latexmk -CA
 	rm -f main.pdf
+	find . -name "*.bak*" -delete
 
 view: main.pdf
 	open main.pdf
