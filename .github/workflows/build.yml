@@ -1,0 +1,21 @@
+name: Build CV PDF
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full
+          run: latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make main.tex
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv.pdf
+          path: main.pdf
