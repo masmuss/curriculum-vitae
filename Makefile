@@ -15,7 +15,7 @@ all: help
 build: main.pdf
 
 main.pdf: main.tex
-	latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make main.tex
+	latexmk -pdf main.tex
 
 format:
 	latexindent -s -w $(TEX_FILES)
