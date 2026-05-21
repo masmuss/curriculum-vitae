@@ -19,3 +19,12 @@ jobs:
         with:
           name: cv.pdf
           path: main.pdf
+      - name: Create/Update Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: latest
+          files: main.pdf
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
