@@ -3,8 +3,6 @@ name: Build CV PDF
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   build:
@@ -14,8 +12,17 @@ jobs:
       - uses: xu-cheng/texlive-action@v2
         with:
           scheme: full
-          run: latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make main.tex
+          run: latexmk -pdf main.tex
       - uses: actions/upload-artifact@v4
         with:
           name: cv.pdf
           path: main.pdf
+      - name: Create/Update Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: latest
+          files: main.pdf
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

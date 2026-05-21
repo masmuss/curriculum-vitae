@@ -22,6 +22,7 @@
 	colorlinks=true,
 	urlcolor=primaryColor
 ]{hyperref}
+\urlstyle{same}
 \usepackage[pscoord]{eso-pic}
 \usepackage{calc}
 \usepackage{bookmark}
@@ -96,10 +97,34 @@
 	\end{adjustwidth}
 }
 
+\newcommand{\twocolentrydatewidth}{4.0cm}
+
 \newenvironment{twocolentry}[2][]{
 	\onecolentry
 	\def\secondColumn{#2}
-	\setcolumnwidth{0.5\linewidth}
+	\setcolumnwidth{\fill, \fill}
+	\begin{paracol}{2}
+		}{
+		\switchcolumn \raggedleft \secondColumn
+	\end{paracol}
+	\endonecolentry
+}
+
+\newenvironment{twocolentrydate}[2][]{
+	\onecolentry
+	\def\secondColumn{#2}
+	\setcolumnwidth{\fill, \twocolentrydatewidth}
+	\begin{paracol}{2}
+		}{
+		\switchcolumn \raggedleft \secondColumn
+	\end{paracol}
+	\endonecolentry
+}
+
+\newenvironment{twocolentrylink}[2][]{
+	\onecolentry
+	\def\secondColumn{#2}
+	\setcolumnwidth{\fill, \fill}
 	\begin{paracol}{2}
 		}{
 		\switchcolumn \raggedleft \secondColumn
