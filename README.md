@@ -7,10 +7,31 @@ LaTeX-based CV of **Ahmad Musafir Khoirul Fattah** — full-stack developer with
 ```sh
 make build   # compile main.pdf
 make view    # open the PDF
+make format  # format all .tex files with latexindent
 make clean   # remove build artifacts
 ```
 
 Requires a LaTeX distribution (MacTeX, TeX Live, etc.) with `latexmk` and `lualatex`.
+
+## Project Structure
+
+```
+.
+├── main.tex              # entry point
+├── preamble.tex          # packages, settings, custom environments
+├── sections/             # content per section
+│   ├── header.tex
+│   ├── summary.tex
+│   ├── education.tex
+│   ├── experience.tex
+│   ├── projects.tex
+│   ├── tools.tex
+│   └── languages.tex
+├── .github/workflows/    # CI: auto-build PDF on push
+├── .latexindent.yaml     # formatter config
+├── Makefile
+└── README.md
+```
 
 ## CI
 

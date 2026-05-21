@@ -1,3 +1,7 @@
+## LaTeX formatter backups
+*.bak*
+*.bak0
+
 ## LaTeX generated files
 *.aux
 *.bbl

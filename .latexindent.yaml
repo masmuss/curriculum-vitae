@@ -1,0 +1,5 @@
+indentAfterItems: itemize
+indentAfterHeadings: section
+indentPreamble: 0
+noAdditionalBeginEnd: 1
+lookForParentEnvironments: 0
