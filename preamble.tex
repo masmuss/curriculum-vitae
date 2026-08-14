@@ -65,35 +65,35 @@
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
 \newenvironment{highlights}{
 	\begin{itemize}[
-			topsep=0.10 cm,
-			parsep=0.10 cm,
-			partopsep=0pt,
-			itemsep=0pt,
-			leftmargin=0 cm + 10pt
-		]
-		}{
+		topsep=0.10 cm,
+		parsep=0.10 cm,
+		partopsep=0pt,
+		itemsep=0pt,
+		leftmargin=0 cm + 10pt
+	]
+}{
 	\end{itemize}
 }
 
 \newenvironment{highlightsforbulletentries}{
 	\begin{itemize}[
-			topsep=0.10 cm,
-			parsep=0.10 cm,
-			partopsep=0pt,
-			itemsep=0pt,
-			leftmargin=10pt
-		]
-		}{
+		topsep=0.10 cm,
+		parsep=0.10 cm,
+		partopsep=0pt,
+		itemsep=0pt,
+		leftmargin=10pt
+	]
+}{
 	\end{itemize}
 }
 
 \newenvironment{onecolentry}{
 	\begin{adjustwidth}{
-			0 cm + 0.00001 cm
-		}{
-			0 cm + 0.00001 cm
-		}
-		}{
+		0 cm + 0.00001 cm
+	}{
+		0 cm + 0.00001 cm
+	}
+}{
 	\end{adjustwidth}
 }
 
@@ -104,8 +104,8 @@
 	\def\secondColumn{#2}
 	\setcolumnwidth{\fill, \fill}
 	\begin{paracol}{2}
-		}{
-		\switchcolumn \raggedleft \secondColumn
+}{
+	\switchcolumn \raggedleft \secondColumn
 	\end{paracol}
 	\endonecolentry
 }
@@ -115,8 +115,8 @@
 	\def\secondColumn{#2}
 	\setcolumnwidth{\fill, \twocolentrydatewidth}
 	\begin{paracol}{2}
-		}{
-		\switchcolumn \raggedleft \secondColumn
+}{
+	\switchcolumn \raggedleft \secondColumn
 	\end{paracol}
 	\endonecolentry
 }
@@ -126,8 +126,8 @@
 	\def\secondColumn{#2}
 	\setcolumnwidth{\fill, \fill}
 	\begin{paracol}{2}
-		}{
-		\switchcolumn \raggedleft \secondColumn
+}{
+	\switchcolumn \raggedleft \secondColumn
 	\end{paracol}
 	\endonecolentry
 }
@@ -137,9 +137,9 @@
 	\def\thirdColumn{#3}
 	\setcolumnwidth{, \fill, 4.5 cm}
 	\begin{paracol}{3}
-		{\raggedright #2} \switchcolumn
-		}{
-		\switchcolumn \raggedleft \thirdColumn
+	{\raggedright #2} \switchcolumn
+}{
+	\switchcolumn \raggedleft \thirdColumn
 	\end{paracol}
 	\endonecolentry
 }
