@@ -1,8 +1,11 @@
-name: Build CV PDF
+name: build pdf
 
 on:
   push:
     branches: [main]
+
+env:
+  PDF_FILE_NAME: CV_AhmadMusafirKhoirulFattah_BackendDeveloper.pdf
 
 permissions:
   contents: write
@@ -16,16 +19,21 @@ jobs:
         with:
           scheme: full
           run: latexmk -pdf main.tex
+
+      - name: Rename PDF
+        run: mv main.pdf ${{ env.PDF_FILE_NAME }}
+
       - uses: actions/upload-artifact@v4
         with:
           name: cv.pdf
-          path: main.pdf
+          path: ${{ env.PDF_FILE_NAME }}
+
       - name: Create/Update Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: latest
-          files: main.pdf
+          files: ${{ env.PDF_FILE_NAME }}
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
