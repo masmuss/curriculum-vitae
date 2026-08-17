@@ -27,7 +27,7 @@ format:
 clean:
 	latexmk -CA
 	rm -f main.pdf
-	find . -type f \( -name "*.bak*" -o -name "*.log" -o -name "*.aux" \) -delete
+	find . -type f \( -name "*.bak*" -o -name "*.log" -o -name "*.aux" --name "*.fls" --name "*.fdb_latexmk" \) -delete
 
 view: main.pdf
 	open -a Preview main.pdf
