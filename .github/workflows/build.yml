@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  PDF_FILE_NAME: CV_AhmadMusafirKhoirulFattah_BackendDeveloper.pdf
+  PDF_FILE_NAME: Ahmad_Musafir_Khoirul_Fattah_FullStack_Backend_Focused.pdf
 
 permissions:
   contents: write
