@@ -3,6 +3,9 @@ name: build pdf
 on:
   push:
     branches: [main]
+    paths:
+      - "**/*.tex"
+      - "Makefile"
 
 env:
   PDF_FILE_NAME: Ahmad_Musafir_Khoirul_Fattah_FullStack_Backend_Focused.pdf
