@@ -31,6 +31,32 @@ jobs:
           name: cv.pdf
           path: ${{ env.PDF_FILE_NAME }}
 
+      # one-time cleanup of an abandoned asset; no-op once gone
+      - name: Remove stale main.pdf asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          asset_id=$(gh api repos/${{ github.repository }}/releases/tags/latest \
+            --jq '.assets[] | select(.name == "main.pdf") | .id')
+          if [ -n "$asset_id" ]; then
+            gh api -X DELETE "repos/${{ github.repository }}/releases/assets/$asset_id"
+            echo "Deleted stale asset main.pdf ($asset_id)"
+          else
+            echo "No stale main.pdf asset found"
+          fi
+
+      - name: Delete existing asset with current name
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          asset_id=$(gh api repos/${{ github.repository }}/releases/tags/latest \
+            --jq --arg name "$PDF_FILE_NAME" \
+            '.assets[] | select(.name == $name) | .id')
+          if [ -n "$asset_id" ]; then
+            gh api -X DELETE "repos/${{ github.repository }}/releases/assets/$asset_id"
+            echo "Deleted existing asset $PDF_FILE_NAME ($asset_id)"
+          fi
+
       - name: Create/Update Release
         uses: softprops/action-gh-release@v3.0.2
         if: github.ref == 'refs/heads/main'
@@ -38,5 +64,7 @@ jobs:
           tag_name: latest
           files: ${{ env.PDF_FILE_NAME }}
           prerelease: false
+          fail_on_unmatched_files: true
+          make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
